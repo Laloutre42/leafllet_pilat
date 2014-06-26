@@ -1,0 +1,24 @@
+{
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "properties": {
+            "name": "Crêt de la Perdrix",
+            "show_on_map": true
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [4.57278, 45.3825]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "Crêt de l'Oeillon",
+            "show_on_map": true
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [4.61139, 45.3925]
+        }
+    }]
+}
