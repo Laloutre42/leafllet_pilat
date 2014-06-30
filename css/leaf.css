@@ -1,39 +1,49 @@
-#map { 
-	width: 850px;
-	height: 800px; 
+body {
+    display:block;
 }
-
+#map {
+    width: 850px;
+    height: 800px;
+    float: left;
+    display:inline-block;
+    border-radius: 5px;    
+}
+#right_panel {
+    width: 350px;
+    height: 800px;
+    padding: 6px 8px;
+    float: left;
+    display:inline-block;
+    margin-left: 12px;
+}
 .info {
     padding: 6px 8px;
     font: 14px/16px Arial, Helvetica, sans-serif;
     background: white;
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
 }
-
 .info h4 {
     margin: 0 0 5px;
     color: #777;
+    font-size: 14px;
+    font-weight: bold;
 }
-
 .info h5 {
     margin: 0 0 5px;
     font: 14px/16px Arial, Helvetica, sans-serif;
 }
-
 .info.zoom {
-	width: 780px;
-	height: 750px; 	
+    width: 780px;
+    height: 750px;
 }
-
 .info span.field {
-	color: #9B7D7D;
-	font-weight: bolder;
+    color: #9B7D7D;
+    font-weight: bolder;
 }
-
 #infoClosedButton {
-	float: right;
-	color: black;
-	cursor: pointer;
+    float: right;
+    color: black;
+    cursor: pointer;
 }

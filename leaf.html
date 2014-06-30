@@ -3,16 +3,42 @@
 <head>
     <title>Leaflet</title>
     <meta charset="utf-8">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+    <!-- Leaflet -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+    <!-- Perso -->
     <link rel="stylesheet" href="./css/leaf.css" />
 </head>
 
 <body>
     <div id="map"></div>
+    <div id="right_panel">
+        <div class="btn-group-vertical" data-toggle="buttons">
+            <label class="btn btn-default">
+                <input class="poiFilter" type="checkbox" value="Village" checked>Communes
+            </label>
+            <label class="btn btn-default">
+                <input class="poiFilter" type="checkbox" value="Point haut">Points hauts (col, sommets...)
+            </label>
+        </div>
+    </div>
+
+    <!-- Js files -->
+
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="./js/BoundaryCanvas.js"></script>
     <script src="./js/leaf.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

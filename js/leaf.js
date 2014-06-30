@@ -1,6 +1,9 @@
 var VILLAGE = "Village";
 var POINT_HAUT = "Point haut";
+var poi_show_on_map = [];
 
+/*Pilat POI layer*/
+var geojsonPilatPoiLayer;
 /*New map*/
 var pilatMap = L.map('map').setView([51.505, -0.09], 13);
 //mapProviderUrl = 'http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png';
@@ -147,7 +150,7 @@ info.addTo(pilatMap);
 
 /*Add geojson layer for markers*/
 $.getJSON("./geojson/POI.geo.json", function(data) {
-    var geojsonPilatPOI = L.geoJson(data, {
+    geojsonPilatPoiLayer = L.geoJson(data, {
 
         // Return custom markers
         pointToLayer: function(feature, latlng) {
@@ -183,6 +186,38 @@ $.getJSON("./geojson/POI.geo.json", function(data) {
         }
     });
 
-    geojsonPilatPOI.addTo(pilatMap);
+    //geojsonPilatPoiLayer.addTo(pilatMap);
 
 });
+
+$(".poiFilter").change(addOrRemovePoi);
+
+function addOrRemovePoi(){
+
+    if ($.inArray(this.value, poi_show_on_map) > -1){
+        poi_show_on_map.splice( $.inArray(this.value, poi_show_on_map), 1 );
+    }
+    else{
+        poi_show_on_map.push(this.value);
+    }
+    filterPOI();
+}
+
+/*Filter POI depending of the user choise (radio buttons)*/
+function filterPOI() {
+
+    if (pilatMap.hasLayer(geojsonPilatPoiLayer)) {
+        pilatMap.removeLayer(geojsonPilatPoiLayer);
+    }
+
+    geojsonPilatPoiLayer = new L.featureGroup();
+
+    // Add markers
+    $.each(pilatMarkers, function(key, value) {
+        if ($.inArray(value.feature.properties.type, poi_show_on_map) > -1) {
+            geojsonPilatPoiLayer.addLayer(value);
+        }
+    });
+
+    geojsonPilatPoiLayer.addTo(pilatMap);
+}
