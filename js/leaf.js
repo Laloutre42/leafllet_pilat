@@ -84,7 +84,7 @@ function zoomOnFeature(e) {
     info.update(marker.feature.properties, true);
 }
 
-/*Dezoom on feature event on marker*/
+/*Dezoom feature event on marker*/
 
 function deZoomOnFeature(e) {
 
