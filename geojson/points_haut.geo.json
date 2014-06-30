@@ -3,8 +3,10 @@
     "features": [{
         "type": "Feature",
         "properties": {
+            "type": "Point haut",            
             "name": "Crêt de la Perdrix",
-            "show_on_map": true
+            "altitude": 1462,            
+            "image": "/leaf/img/280px-Jasserie1308-2.jpg"
         },
         "geometry": {
             "type": "Point",
@@ -13,8 +15,10 @@
     }, {
         "type": "Feature",
         "properties": {
+            "type": "Point haut",
             "name": "Crêt de l'Oeillon",
-            "show_on_map": true
+            "altitude": 1362,
+            "image": "/leaf/img/280px-Pilat_cret_oeillon.jpg"
         },
         "geometry": {
             "type": "Point",

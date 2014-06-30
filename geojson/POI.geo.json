@@ -1,0 +1,76 @@
+{
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "properties": {
+            "type": "Village",
+            "name": "Planfoy",
+            "site_web": "http://www.planfoy.fr",
+            "habitants": 939
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [4.441389, 45.383889]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "type": "Village",
+            "name": "Rochetaillée",
+            "site_web": "http://village.rochetaillee.free.fr",
+            "habitants": 957
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [4.445919, 45.410573]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "type": "Village",
+            "name": "Tarentaise",
+            "site_web": "",
+            "habitants": 449
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [4.488931, 45.373389]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "type": "Village",
+            "name": "Saint-Genest-Malifaux",
+            "site_web": "www.st-genest-malifaux.fr",
+            "habitants": 2991
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [4.420556, 45.340833]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "type": "Point haut",
+            "name": "Crêt de la Perdrix",
+            "altitude": 1462,
+            "image": "/leaf/img/280px-Jasserie1308-2.jpg"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [4.57278, 45.3825]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "type": "Point haut",
+            "name": "Crêt de l'Oeillon",
+            "altitude": 1362,
+            "image": "/leaf/img/280px-Pilat_cret_oeillon.jpg"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [4.61139, 45.3925]
+        }
+    }]
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "type":"Village",
+    "latitude":45.383889,
+    "longitude":4.441389,
+    "name":"Planfoy",
+    "site_web":"http://www.planfoy.fr",
+    "habitants":939
+  },
+  {
+    "type":"Village",
+    "latitude":45.410573,
+    "longitude":4.445919,
+    "name":"Rochetaillée",
+    "site_web":"http://village.rochetaillee.free.fr",
+    "habitants":957
+  },
+  {
+    "type":"Village",
+    "latitude":45.373389,
+    "longitude":4.488931,
+    "name":"Tarentaise",
+    "site_web":"",
+    "habitants":449
+  },
+  {
+    "type":"Village",
+    "latitude":45.340833,
+    "longitude":4.420556,
+    "name":"Saint-Genest-Malifaux",
+    "site_web":"www.st-genest-malifaux.fr",
+    "habitants":2991
+  }
+]
