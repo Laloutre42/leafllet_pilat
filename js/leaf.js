@@ -120,7 +120,7 @@ info.update = function(props, large) {
         htmlContent += '<h4>' + props.type;
 
         if (large) {
-            htmlContent += "<span id='infoClosedButton'>CLOSED</span>";
+            htmlContent += "<span id='infoClosedButton'>CLOSE</span>";
         }
         htmlContent += "</h4><h5>" + props.name + "</h5>";
 
