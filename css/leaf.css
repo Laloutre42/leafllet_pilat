@@ -45,3 +45,11 @@ body {
     color: black;
     cursor: pointer;
 }
+
+.full-width-button{
+    width: 100%;
+}
+
+#poiListLabel label{
+    margin-bottom: 6px;
+}

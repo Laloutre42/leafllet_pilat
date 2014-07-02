@@ -1,5 +1,5 @@
-define(['backbone', 'resthub', 'hbs!template/commands'],
-    function(Backbone, Resthub, commandsTemplate) {
+define(['backbone', 'resthub', 'hbs!template/commands', 'view/itinerary-view', 'view/poi-view'],
+    function(Backbone, Resthub, commandsTemplate, ItineraryView, PoiView) {
 
         var CommandsView = Resthub.View.extend({
 
@@ -11,9 +11,7 @@ define(['backbone', 'resthub', 'hbs!template/commands'],
             /**
              * Events
              */
-            events: {
-                'change .poiFilter': 'addOrRemovePoi'
-            },
+            events: {},
 
             /**
              * Initialize
@@ -24,15 +22,11 @@ define(['backbone', 'resthub', 'hbs!template/commands'],
                 // Events aggregator object
                 this.vent = attributes.vent;
                                 
+                // Render the view and the sub view
                 this.render();
-            },
+                new PoiView({ root: $('#poi'), vent: this.vent});     
+                new ItineraryView({ root: $('#itinerary'), vent: this.vent});     
 
-            /**
-             * Add or remove specified POI on the map
-             * @param event
-             */
-            addOrRemovePoi: function(event) {
-                this.vent.trigger("addOrRemovePoi", event.target.value);
             }
 
         });
