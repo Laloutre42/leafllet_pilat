@@ -4,6 +4,7 @@
         "type": "Feature",
         "properties": {
             "type": "Village",
+            "category": "Village",            
             "name": "Planfoy",
             "site_web": "http://www.planfoy.fr",
             "habitants": 939
@@ -16,6 +17,7 @@
         "type": "Feature",
         "properties": {
             "type": "Village",
+            "category": "Village",             
             "name": "Rochetaillée",
             "site_web": "http://village.rochetaillee.free.fr",
             "habitants": 957
@@ -28,6 +30,7 @@
         "type": "Feature",
         "properties": {
             "type": "Village",
+            "category": "Village",             
             "name": "Tarentaise",
             "site_web": "",
             "habitants": 449
@@ -40,6 +43,7 @@
         "type": "Feature",
         "properties": {
             "type": "Village",
+            "category": "Village",             
             "name": "Saint-Genest-Malifaux",
             "site_web": "www.st-genest-malifaux.fr",
             "habitants": 2991
@@ -52,6 +56,7 @@
         "type": "Feature",
         "properties": {
             "type": "Point haut",
+            "category": "Point haut",             
             "name": "Crêt de la Perdrix",
             "altitude": 1462,
             "image": "/leaf/img/280px-Jasserie1308-2.jpg"
@@ -64,6 +69,7 @@
         "type": "Feature",
         "properties": {
             "type": "Point haut",
+            "category": "Point haut",                
             "name": "Crêt de l'Oeillon",
             "altitude": 1362,
             "image": "/leaf/img/280px-Pilat_cret_oeillon.jpg"

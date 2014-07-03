@@ -33,8 +33,12 @@ define(['backbone', 'resthub', 'leaflet', 'boundaryCanvas', 'hbs!template/map', 
                 this.vent = attributes.vent;
 
                 _.bindAll(this, "addOrRemovePoi");
+                _.bindAll(this, "addTrace");
+                _.bindAll(this, "removeTrace");
                 _.bindAll(this, "deZoomOnFeature");
                 this.vent.on("addOrRemovePoi", this.addOrRemovePoi);
+                this.vent.on("addTrace", this.addTrace);
+                this.vent.on("removeTrace", this.removeTrace);
                 this.vent.on("deZoomOnFeature", this.deZoomOnFeature);
 
                 // Render the view and the sub view
@@ -45,6 +49,8 @@ define(['backbone', 'resthub', 'leaflet', 'boundaryCanvas', 'hbs!template/map', 
 
                 // Pilat POI layer
                 this.geojsonPilatPoiLayer;
+                // Trace
+                this.geojsonTrace;
 
                 // New map
                 this.pilatMap = L.map('map').setView([51.505, -0.09], 13);
@@ -98,7 +104,6 @@ define(['backbone', 'resthub', 'leaflet', 'boundaryCanvas', 'hbs!template/map', 
                             for (r = 0; r < feature.geometry.coordinates[0].length; r++) {
                                 latLngGeom.push(new L.LatLng(feature.geometry.coordinates[0][r][1], feature.geometry.coordinates[0][r][0]));
                             }
-
                         }
                     });
 
@@ -131,12 +136,16 @@ define(['backbone', 'resthub', 'leaflet', 'boundaryCanvas', 'hbs!template/map', 
                             var icon;
                             if (feature.properties.type === mapView.constants.VILLAGE) {
                                 icon = L.icon({
-                                    iconUrl: '/img/icon/smallcity.png'
+                                    iconUrl: '/img/icon/smallcity.png',
+                                    iconSize: [32, 37],
+                                    iconAnchor: [16, 37],
                                 });
                             }
                             if (feature.properties.type === mapView.constants.POINT_HAUT) {
                                 icon = L.icon({
-                                    iconUrl: '/img/icon/peak.png'
+                                    iconUrl: '/img/icon/peak.png',
+                                    iconSize: [32, 37],
+                                    iconAnchor: [16, 37],
                                 });
                             }
 
@@ -157,8 +166,6 @@ define(['backbone', 'resthub', 'leaflet', 'boundaryCanvas', 'hbs!template/map', 
                             //layer.bindPopup(feature.properties.name);
                         }
                     });
-
-                    //geojsonPilatPoiLayer.addTo(pilatMap);
 
                 });
             },
@@ -183,7 +190,7 @@ define(['backbone', 'resthub', 'leaflet', 'boundaryCanvas', 'hbs!template/map', 
 
                 // Add markers
                 _.each(this.pilatMarkers, function(element) {
-                    if ($.inArray(element.feature.properties.type, this.poiShowOnMap) > -1) {
+                    if ($.inArray(element.feature.properties.category, this.poiShowOnMap) > -1) {
                         this.geojsonPilatPoiLayer.addLayer(element);
                     }
                 }, this);
@@ -230,7 +237,6 @@ define(['backbone', 'resthub', 'leaflet', 'boundaryCanvas', 'hbs!template/map', 
              * Dezoom feature event on marker
              * @param event
              */
-
             deZoomOnFeature: function(event) {
 
                 // Add events
@@ -242,6 +248,78 @@ define(['backbone', 'resthub', 'leaflet', 'boundaryCanvas', 'hbs!template/map', 
 
                 mapView.vent.trigger("update", mapView.constants);
             },
+
+            /**
+             * Add trace on the map
+             * @param name - The name of the trace
+             */
+            addTrace: function(name) {
+
+                // Remove previous trace
+                if (mapView.pilatMap.hasLayer(mapView.geojsonTrace)) {
+                    mapView.pilatMap.removeLayer(mapView.geojsonTrace);
+                }
+
+                $.getJSON("./geojson/trace/entreLoireEtArdeche.geo.json", function(data) {
+                    mapView.geojsonTrace = L.geoJson(data, {
+
+                        // Add style to Pilat layer 
+                        style: {
+                            color: 'blue',
+                            fill: false,
+                            weight: 2,
+                            opacity: 1
+                        },
+
+                        pointToLayer: function(feature, latlng) {
+
+                            // Icon depends of feature
+                            var icon;
+                            if (feature.properties.type === mapView.constants.VILLAGE) {
+                                icon = L.icon({
+                                    iconUrl: '/img/icon/smallcity.png',
+                                    iconSize: [32, 37],
+                                    iconAnchor: [16, 37],
+                                });
+                            }
+                            if (feature.properties.type === mapView.constants.POINT_HAUT) {
+                                icon = L.icon({
+                                    iconUrl: '/img/icon/peak.png',
+                                    iconSize: [32, 37],
+                                    iconAnchor: [16, 37],
+                                });
+                            }
+
+                            var marker = L.marker(latlng, {
+                                title: feature.properties.name,
+                                icon: icon
+                            }).on({
+                                mouseover: mapView.highlightFeature,
+                                mouseout: mapView.resetHighlight,
+                                click: mapView.zoomOnFeature
+                            });
+                            mapView.pilatMarkers.push(marker);
+                            return marker;
+                        },
+                    });
+
+                    // Fit bounds and add geojson
+                    mapView.pilatMap.fitBounds(mapView.geojsonTrace.getBounds());
+                    mapView.geojsonTrace.addTo(mapView.pilatMap);
+
+                });
+            },
+
+            /**
+             * Remove trace on the map
+             */
+            removeTrace: function() {
+
+                // Remove previous trace
+                if (mapView.pilatMap.hasLayer(mapView.geojsonTrace)) {
+                    mapView.pilatMap.removeLayer(mapView.geojsonTrace);
+                }
+            }
 
 
         });

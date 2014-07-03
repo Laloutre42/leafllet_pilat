@@ -6,7 +6,7 @@ body {
     height: 800px;
     float: left;
     display:inline-block;
-    border-radius: 5px;    
+    border-radius: 5px;
 }
 #right_panel {
     width: 350px;
@@ -45,11 +45,15 @@ body {
     color: black;
     cursor: pointer;
 }
-
-.full-width-button{
+.full-width-button {
     width: 100%;
 }
-
-#poiListLabel label{
+button.full-width-button {
+    background-color: #d3d3d3;
+}
+button.full-width-button.collapsed {
+    background-color: #e7e7e7;
+}
+#poiListLabel label {
     margin-bottom: 6px;
 }
